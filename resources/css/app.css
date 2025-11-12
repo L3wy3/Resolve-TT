@@ -31,9 +31,8 @@ table#agents button {
 }
 table#agents tr:nth-child(even){background-color: #bab7b7;}
 
-.green span {color: white;}
+.green span, .red span {color: white;}
 .orange span {color: black;}
-.red span {color: white;}
 .green {background-color: green;}
 .orange {background-color: orange;}
 .red {background-color: red;}
