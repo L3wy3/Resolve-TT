@@ -13,7 +13,9 @@ class AgentController extends Controller
     {
         // This doesn't feel efficient but making a field in the database to hold the achievement % didn't either
         $agents = Agent::orderByRaw('current_sales / target ASC')->get();
-		return view('agents',compact('agents'));
+        $combinedTarget = Agent::sum('target');
+        $combinedSales = Agent::sum('current_sales');
+		return view('agents',compact('agents','combinedTarget','combinedSales'));
     }
 
     public function updateTarget(Request $request,$id) {

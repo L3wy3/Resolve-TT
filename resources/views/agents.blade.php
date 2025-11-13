@@ -40,12 +40,12 @@
                 @endforeach
                 <tr>
                     @php
-                        $combinedPercentage = number_format($combinedSales / $combinedTarget * 100, 0);
+                        $combinedPercentage = number_format($combinedSales / ($combinedTarget ?: 1) * 100, 0);
                     @endphp
                     <td>Combined Sales</td>
                     <td>£{{number_format($combinedSales,2)}}</td>
                     <td>£{{number_format($combinedTarget,2)}}</td>
-                    <td>£{{number_format($combinedSales / $combinedTarget * 100, 0)}}%</td>
+                    <td>£{{number_format($combinedSales / ($combinedTarget ?: 1) * 100, 0)}}%</td>
                     <td class="{{$combinedPercentage == 100 ? 'orange' : ($combinedPercentage < 100 ? 'red' : 'green')}}">
                         <span class="mobile">{{$combinedPercentage == 100 ? "Met" : ($combinedPercentage < 100 ? "Not Met" : "Exceeded")}}</span>
                     </td>
