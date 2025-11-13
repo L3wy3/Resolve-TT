@@ -19,13 +19,12 @@ class AgentController extends Controller
     }
 
     public function updateTarget(Request $request,$id) {
-        $agents = Agent::orderByRaw('current_sales / target ASC')->get();
         $combinedTarget = Agent::sum('target');
         $combinedSales = Agent::sum('current_sales');
         $agent = Agent::findOrFail($id);
         $agent->target = $request->input('updateTarget');
         $agent->save();
-        $agent->refresh();
+        $agents = Agent::orderByRaw('current_sales / target ASC')->get();
         return view('agents',compact('agents','combinedTarget','combinedSales'));
     }
 }
